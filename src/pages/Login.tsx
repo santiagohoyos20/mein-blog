@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../services/supabaseClient'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function AdminLogin() {
   const [email, setEmail] = useState('')
@@ -14,7 +14,7 @@ function AdminLogin() {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession()
       if (data.session) {
-        navigate('/admin', { replace: true })
+        navigate('/', { replace: true })
       }
     }
     checkSession()
