@@ -54,12 +54,12 @@ function CreatePost() {
   // Función para manejar el logout
   const handleLogout = async () => {
     try {
+      navigate("/");
       const { error } = await supabase.auth.signOut();
       if (error) {
         console.error("Error al cerrar sesión:", error);
       } else {
         // Opcional: mostrar mensaje de confirmación
-        navigate("/");
         console.log("Sesión cerrada exitosamente");
         // La redirección se manejará automáticamente por el listener de auth
       }
