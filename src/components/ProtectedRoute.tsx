@@ -24,7 +24,7 @@ export default function ProtectedRoute({
 
     // Escuchar cambios de sesión en tiempo real
     const { data: subscription } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (_event, session) => {s
         if (isMounted) setSession(session);
       }
     );
