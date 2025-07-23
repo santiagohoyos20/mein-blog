@@ -42,8 +42,7 @@ const SocialMediaComponent: React.FC = () => {
                 className="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 <IconComponent 
-                  className="w-5 h-5 transition-colors duration-300" 
-                  style={{ color: '#4A4E69' }}
+                  className="w-5 h-5 transition-colors duration-300 text-[#4A4E69]" 
                 />
               </div>
               
