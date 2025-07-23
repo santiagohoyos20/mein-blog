@@ -24,10 +24,10 @@ const PostComponent: React.FC<{ post: Post; isLogged: boolean }> = ({
                 })}
               </time>
               <div className="flex gap-4">
-                <button className="bg-orange-500 flex items-center gap-2 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition">
+                <button className="cursor-pointer bg-orange-500 flex items-center gap-2 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition">
                   <Edit size={18} />
                 </button>
-                <button className="bg-orange-500 flex items-center gap-2 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition">
+                <button className="cursor-pointer bg-orange-500 flex items-center gap-2 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition">
                   <Trash size={18} />
                 </button>
               </div>

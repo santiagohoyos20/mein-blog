@@ -23,7 +23,7 @@ const AdminButton: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
       <div className="flex flex-row space-x-3 p-3 rounded-2xl shadow-lg backdrop-blur-sm bg-amber-50">
         <button
           onClick={handleClick}
-          className="p-3 bg-orange-100 rounded-full transition-colors duration-300 hover:scale-110 hover:shadow-lg text-[#4A4E69]"
+          className="cursor-pointer p-3 bg-orange-100 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg text-[#4A4E69]"
         >
           {isLogged ? <LogOut /> : <User />}
         </button>
