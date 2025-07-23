@@ -4,7 +4,8 @@ import type { Post } from "../types/types";
 import PostComponent from "../components/PostComponent";
 import SocialMediaComponent from "../components/SocialMediaComponent";
 import AdminButton from "../components/AdminButton";
-import { Check, Plus, X } from "lucide-react";
+import {Plus, X } from "lucide-react";
+import CreatePostForm from "../components/CreatePostForm";
 
 function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -44,12 +45,6 @@ function Home() {
     setIsLogged(!!data.session);
   }
 
-  const handleCreatePost = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Crear nuevo post");
-    setShowNewPost(false);
-  };
-
   return (
     <div className="bg-orange-100">
       <AdminButton isLogged={isLogged} />
@@ -81,28 +76,7 @@ function Home() {
                   <X />
                 </button>
               </div>
-              <form onSubmit={handleCreatePost}>
-                <div className="flex flex-col gap-4">
-                  <input
-                    type="text"
-                    placeholder="Titel"
-                    className="p-2 text-3xl font-normal mb-4 focus:outline-none"
-                  />
-                  <textarea
-                    placeholder="Inhalt"
-                    className="p-4 text-lg mb-6 leading-relaxed focus:outline-none"
-                  ></textarea>
-                </div>
-              
-              <div className="flex justify-end w-full ">
-                <button
-                  type="submit"
-                  className="cursor-pointer bg-orange-500 flex items-center justify-end hover:bg-orange-600 text-white px-2 py-1 rounded-lg transition"
-                >
-                  <Check />
-                </button>
-              </div>
-              </form>
+              <CreatePostForm setPosts={setPosts} posts={posts} />
             </article>
           </div>
         )}
