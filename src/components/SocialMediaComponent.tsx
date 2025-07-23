@@ -18,7 +18,7 @@ const SocialMediaComponent: React.FC = () => {
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://www.linkedin.com/in/santiagojhoyoss/',
+      url: 'https://www.linkedin.com/in/santiagohoyos20/',
       color: '#0077B5'
     }
   ];
