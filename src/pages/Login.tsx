@@ -41,7 +41,7 @@ function AdminLogin() {
 
       if (data.user) {
         setMessage('Erfolgreich angemeldet! Weiterleitung...')
-        setTimeout(() => navigate('/admin'), 1500)
+        setTimeout(() => navigate('/'), 1500)
       }
     } catch (error: any) {
       console.error('Login error:', error)
