@@ -6,35 +6,42 @@ import type { Post } from "../types/types";
 interface CreatePostFormProps {
   setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
   posts: Post[];
+  setShowNewPost: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreatePostForm: React.FC<CreatePostFormProps> = ({ setPosts, posts }) => {
+const CreatePostForm: React.FC<CreatePostFormProps> = ({ setPosts, posts, setShowNewPost }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleCreatePost = async (e: React.FormEvent) => {
     e.preventDefault(); // Evita recarga de la página
 
-    // Insertar en Supabase
-    const { data, error } = await supabase
-      .from("posts")
-      .insert([
-        {
-          title: title,
-          content: content,
-          date: new Date().toISOString(),
-        },
-      ])
-      .select(); // Devuelve el registro insertado
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .insert([
+          {
+            title: title,
+            content: content,
+            date: new Date().toISOString(),
+          },
+        ])
+        .select(); // Devuelve el registro insertado
 
-    if (error) {
-      console.error("Error al insertar el post:", error);
-    } else {
+      if (error) {
+        throw new Error(error.message);
+      }
+
       console.log("Post insertado:", data);
-      // Limpia el formulario
+
+      // Actualiza el estado y limpia el formulario
       setPosts([data[0], ...posts]);
       setTitle("");
       setContent("");
+      setShowNewPost(false);
+    } catch (err) {
+      console.error("Error al insertar el post:", err);
+      alert("Hubo un error al crear el post.");
     }
   };
 
