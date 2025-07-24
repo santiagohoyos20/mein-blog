@@ -76,7 +76,7 @@ function Home() {
                   <X />
                 </button>
               </div>
-              <CreatePostForm setPosts={setPosts} posts={posts} />
+              <CreatePostForm setPosts={setPosts} posts={posts} setShowNewPost={setShowNewPost} />
             </article>
           </div>
         )}
