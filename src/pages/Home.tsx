@@ -81,7 +81,7 @@ function Home() {
           </div>
         )}
         {posts.map((post) => (
-          <PostComponent key={post.id} post={post} isLogged={isLogged} />
+          <PostComponent key={post.id} post={post} isLogged={isLogged} setPosts={setPosts} />
         ))}
       </main>
       <SocialMediaComponent />
