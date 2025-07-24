@@ -17,7 +17,7 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-      <Route path="/admin/login" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
       {/* Ruta para páginas no encontradas */}
     </Routes>

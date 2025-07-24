@@ -11,7 +11,7 @@ const AdminButton: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
       if (isLogged) {
         await supabase.auth.signOut();
       } else {
-        navigate("/admin/login");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
