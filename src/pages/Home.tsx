@@ -4,7 +4,7 @@ import type { Post } from "../types/types";
 import PostComponent from "../components/PostComponent";
 import SocialMediaComponent from "../components/SocialMediaComponent";
 import AdminButton from "../components/AdminButton";
-import {Plus, X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import CreatePostForm from "../components/CreatePostForm";
 
 function Home() {
@@ -47,9 +47,12 @@ function Home() {
 
   return (
     <div className="bg-orange-100">
-      <AdminButton isLogged={isLogged} />
       <main className="flex flex-col gap-[30px] min-h-screen p-8 max-w-[700px] mx-auto">
-        <h1 className="text-5xl font-bold my-2">Mein Blog</h1>
+        <div className="flex flex-row justify-between items-center">
+          <h1 className="text-5xl font-bold my-2">Mein Blog</h1>
+          <AdminButton isLogged={isLogged} />
+        </div>
+
         <div className="flex flex-row gap-4 items-center">
           <p className="text-lg">
             Hallo! Ich bin Santiago und das ist mein Blog. Hier teile ich meine
@@ -72,16 +75,26 @@ function Home() {
               <div className="flex justify-end">
                 <button
                   onClick={() => setShowNewPost(false)}
-                  className="cursor-pointer text-[#4A4E69]">
+                  className="cursor-pointer text-[#4A4E69]"
+                >
                   <X />
                 </button>
               </div>
-              <CreatePostForm setPosts={setPosts} posts={posts} setShowNewPost={setShowNewPost} />
+              <CreatePostForm
+                setPosts={setPosts}
+                posts={posts}
+                setShowNewPost={setShowNewPost}
+              />
             </article>
           </div>
         )}
         {posts.map((post) => (
-          <PostComponent key={post.id} post={post} isLogged={isLogged} setPosts={setPosts} />
+          <PostComponent
+            key={post.id}
+            post={post}
+            isLogged={isLogged}
+            setPosts={setPosts}
+          />
         ))}
       </main>
       <SocialMediaComponent />
