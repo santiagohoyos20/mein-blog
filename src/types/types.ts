@@ -5,3 +5,5 @@ export interface Post {
   image?: string | null
   date: string // formato ISO que luego puedes formatear con Date
 }
+
+export type Language = 'es' | 'en' | 'de';

@@ -1,44 +1,30 @@
 import React from "react";
-
-const texts = {
-  es: {
-    greeting:
-      "Hola, soy Santiago y este es mi blog. Aquí comparto mis pensamientos y experiencias para practicar mi alemán.",
-  },
-  en: {
-    greeting:
-      "Hi, I am Santiago and this is my blog. Here I share my thoughts and experiences to practice my German.",
-  },
-  de: {
-    greeting:
-      "Hallo! Ich bin Santiago und das ist mein Blog. Hier teile ich meine Gedanken und Erlebnisse, um mein Deutsch zu üben.",
-  },
-};
+import type { Language } from "../types/types"; // Assuming you have a types file for TypeScript types
 
 const ToggleLanguage: React.FC<{
-  language: string;
-  setLanguage: (lang: string) => void;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }> = ({ language, setLanguage }) => {
-  const languages = [
-    { code: "es", label: "ES", flag: "🇪🇸", name: "Español" },
-    { code: "en", label: "EN", flag: "🇺🇸", name: "English" },
-    { code: "de", label: "DE", flag: "🇩🇪", name: "Deutsch" },
-  ];
+  const languages: { code: Language; label: string; flag: string; name: string }[] = [
+    { code: 'es', label: "ES", flag: "🇪🇸", name: "Español" },
+    { code: 'en', label: "EN", flag: "🇺🇸", name: "English" },
+    { code: 'de', label: "DE", flag: "🇩🇪", name: "Deutsch" },
+  ];  
 
   return (
     <div className="flex justify-center">
-      <div className="bg-gray-200 rounded-full p-1 flex">
+      <div className="bg-amber-50 rounded-full p-1 flex">
         {languages.map((lang) => (
           <button
             key={lang.code}
-            onClick={() => setLanguage(lang.code as keyof typeof texts)}
+            onClick={() => setLanguage(lang.code)}
             className={`
                     w-12 h-12 rounded-full transition-all duration-200
                     flex items-center justify-center text-lg font-medium
                     ${
                       language === lang.code
-                        ? "bg-blue-500 text-white shadow-md"
-                        : "text-gray-500 hover:bg-gray-300"
+                        ? "bg-orange-100 text-black shadow-md"
+                        : "text-gray-500 hover:bg-[#fff3e0] hover:cursor-pointer"
                     }
                   `}
             title={lang.name}

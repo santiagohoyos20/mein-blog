@@ -7,6 +7,7 @@ import AdminButton from "../components/AdminButton";
 import { Plus, X } from "lucide-react";
 import CreatePostForm from "../components/CreatePostForm";
 import ToggleLanguage from "../components/ToggleLanguage";
+import type { Language } from "../types/types"; // Assuming you have a types file for TypeScript types
 
 const texts = {
   es: {
@@ -27,7 +28,7 @@ function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [showNewPost, setShowNewPost] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const [language, setLanguage] = useState<string>("de");
+  const [language, setLanguage] = useState<Language>("de");
 
   useEffect(() => {
     fetchPosts();
@@ -66,13 +67,14 @@ function Home() {
 
   return (
     <div className="bg-orange-100">
-      <ToggleLanguage language={language} setLanguage={setLanguage} />
       <main className="flex flex-col gap-[30px] min-h-screen p-8 max-w-[700px] mx-auto">
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row justify-center items-center">
           <h1 className="text-5xl font-bold my-2">Mein Blog</h1>
+        </div>
+        <div className="flex flex-row justify-evenly items-center">
+          <ToggleLanguage language={language} setLanguage={setLanguage} />
           <AdminButton isLogged={isLogged} />
         </div>
-
         <div className="flex flex-row gap-4 items-center">
           <p className="text-lg">{texts[language].greeting}</p>
           {isLogged && (
