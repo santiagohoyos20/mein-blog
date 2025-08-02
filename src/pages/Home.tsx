@@ -6,11 +6,28 @@ import SocialMediaComponent from "../components/SocialMediaComponent";
 import AdminButton from "../components/AdminButton";
 import { Plus, X } from "lucide-react";
 import CreatePostForm from "../components/CreatePostForm";
+import ToggleLanguage from "../components/ToggleLanguage";
+
+const texts = {
+  es: {
+    greeting:
+      "Hola, soy Santiago y este es mi blog. Aquí comparto mis pensamientos y experiencias para practicar mi alemán.",
+  },
+  en: {
+    greeting:
+      "Hi, I am Santiago and this is my blog. Here I share my thoughts and experiences to practice my German.",
+  },
+  de: {
+    greeting:
+      "Hallo! Ich bin Santiago und das ist mein Blog. Hier teile ich meine Gedanken und Erlebnisse, um mein Deutsch zu üben.",
+  },
+};
 
 function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [showNewPost, setShowNewPost] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
+  const [language, setLanguage] = useState<string>("de");
 
   useEffect(() => {
     fetchPosts();
@@ -45,8 +62,11 @@ function Home() {
     setIsLogged(!!data.session);
   }
 
+  // Configuración de idiomas
+
   return (
     <div className="bg-orange-100">
+      <ToggleLanguage language={language} setLanguage={setLanguage} />
       <main className="flex flex-col gap-[30px] min-h-screen p-8 max-w-[700px] mx-auto">
         <div className="flex flex-row justify-between items-center">
           <h1 className="text-5xl font-bold my-2">Mein Blog</h1>
@@ -54,10 +74,7 @@ function Home() {
         </div>
 
         <div className="flex flex-row gap-4 items-center">
-          <p className="text-lg">
-            Hallo! Ich bin Santiago und das ist mein Blog. Hier teile ich meine
-            Gedanken und Erlebnisse, um mein Deutsch zu üben.
-          </p>
+          <p className="text-lg">{texts[language].greeting}</p>
           {isLogged && (
             <div className="flex flex-row space-x-3 p-3 rounded-2xl shadow-lg backdrop-blur-sm bg-amber-50">
               <button
